@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import Loader from './Components/Loader/Loader.js';
 import Table from './Components/Table/Table.js';
-import TableSearch from './Components/TableSearch/TableSearch.js'
+import TableSearch from './Components/TableSearch/TableSearch.js';
+
+import data from '../src/assets/db.json';
 
 import ReactPaginate from 'react-paginate';
 import _ from 'lodash';
@@ -13,16 +15,16 @@ class App extends Component {
   state = {
     isDataSelected: false,
     isLoading: false,
-    data: [],
+    data: data,
     search: '',
     sortDirection: 'asc', // or desc
     sortField: 'id',
     currentPage: 0
   }
 
-  componentDidMount() {
-    this.selectionData(`http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`)
-  }
+  // componentDidMount() {
+  //   this.selectionData(`http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}`)
+  // }
 
   async fetchData(url) {
     const response = await fetch(url)
